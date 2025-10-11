@@ -1,0 +1,49 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "mix_task",
+      "name": "Run/Debug: active .exs (mix run)",
+      "request": "launch",
+      "task": "run",
+      "taskArgs": ["${relativeFile}"],
+      "projectDir": "${workspaceFolder}"
+    },
+    {
+      "type": "mix_task",
+      "name": "Debug: mix run (no-halt)",
+      "request": "launch",
+      "task": "run",
+      "taskArgs": ["--no-halt"],
+      "projectDir": "${workspaceFolder}"
+    },
+    {
+      "type": "mix_task",
+      "name": "Debug: script via mix run",
+      "request": "launch",
+      "task": "run",
+      "taskArgs": ["scripts/try.exs"],
+      "projectDir": "${workspaceFolder}"
+    },
+    {
+      "type": "mix_task",
+      "name": "Debug: tests (mix test)",
+      "request": "launch",
+      "task": "test",
+      "taskArgs": [],
+      "projectDir": "${workspaceFolder}",
+      "requireFiles": [
+        "test/**/test_helper.exs",
+        "test/**/*_test.exs"
+      ]
+    },
+    {
+      "type": "mix_task",
+      "name": "Debug: bench (mix run bench/bench.exs)",
+      "request": "launch",
+      "task": "run",
+      "taskArgs": ["bench/bench.exs"],
+      "projectDir": "${workspaceFolder}"
+    }
+  ]
+}
