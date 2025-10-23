@@ -22,21 +22,15 @@ defmodule Nhf1KiadottBench do
     |> Map.new()
   end
 
-  def job_verify({size, cycle, constraints, solutions}) do
+  def run_tests({size, cycle, constraints, solutions}) do
     result = Nhf1.helix({size, cycle, constraints}) |> Enum.sort()
     if result == solutions, do: :ok, else: raise "Mismatch in case"
-  end
-
-  def job_solve({size, cycle, constraints, _solutions}) do
-    _ = Nhf1.helix({size, cycle, constraints})
-    :ok
   end
 end
 
 Benchee.run(
   %{
-    "verify (solve+compare)" => fn input -> Nhf1KiadottBench.job_verify(input) end,
-    "solve only"             => fn input -> Nhf1KiadottBench.job_solve(input)   end
+    "run tests" => fn input -> Nhf1KiadottBench.run_tests(input) end
   },
   inputs: Nhf1KiadottBench.inputs_for_benchee(),
   time: 3,
