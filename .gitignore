@@ -21,3 +21,7 @@ hf1-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+/node_modules/
+
+*.pdf

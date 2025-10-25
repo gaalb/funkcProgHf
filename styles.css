@@ -1,0 +1,49 @@
+/* Oldalmargók (biztonsági duplikát a front matter mellett is) */
+@page { margin: 10mm; }
+
+/* Tipográfia */
+html, body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+               Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.1;
+  font-size: 9pt;
+}
+
+/* >>> SORKIZÁRÁS ITT <<< 
+   Célozzuk egyszerre a body-t, a md-to-pdf által beszúrt article-t
+   és a tőled megadott body_class-t (.md-just), és tegyük erőssé. */
+body.md-just p,
+body.md-just li,
+article p,
+article li,
+body p,
+body li {
+  text-align: justify !important;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+}
+
+/* Címsorok maradjanak balra */
+h1, h2, h3, h4, h5, h6 {
+  text-align: left !important;
+  page-break-after: avoid;
+  line-height: 1.25;
+}
+
+/* Kód: ne legyen sorkizárt, ne legyen elválasztás, törjön sor szükség esetén */
+pre, code {
+  text-align: left !important;
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
+  -ms-hyphens: none !important;
+  white-space: pre-wrap;   /* hosszú sorok törése */
+  word-break: normal;
+}
+
+/* Táblázat/ kép biztonsági beállítások */
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 4px 6px; vertical-align: top; word-break: break-word; }
+tr { page-break-inside: avoid; }
+img { max-width: 100%; height: auto; }
